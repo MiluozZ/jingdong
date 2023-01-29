@@ -69,7 +69,6 @@ export default {
     position: relative;
     padding: .16rem .24rem .16rem 0;
     line-height: .22rem;
-    width : 100%;
     font-size: .16rem;
     color: $content-fontcolor;
     @include ellipsis;
@@ -81,7 +80,7 @@ export default {
     .position__notice {
       position: absolute;
       font-size: .2rem;
-      right: .2rem;
+      right: .1rem;
       top: .1rem;
     }
   }

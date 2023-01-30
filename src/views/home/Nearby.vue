@@ -1,17 +1,15 @@
 <template>
     <div class="nearby">
       <h2 class="nearby__title">附近店铺</h2>
-      <div class="nearby__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/near.png" alt="" class="nearby__item__icon">
+      <div v-for="(item, index) in nearbyList" :key="index" class="nearby__item">
+        <img :src= "item.icon" class="nearby__item__icon">
         <div class="nearby__item__content">
-          <div class="nearby__item__content__title">沃尔玛</div>
+          <div class="nearby__item__content__title">{{item.title}}</div>
           <div class="nearby__item__content__tags">
-            <span class="nearby__item__content__tag">月售</span>
-            <span class="nearby__item__content__tag">起送</span>
-            <span class="nearby__item__content__tag">基础运费</span>
+            <span v-for="(tag, index) in tags" :key="index" class="nearby__item__content__tag">{{tag}}</span>
           </div>
           <div class="nearby__item__content__heightlight">
-            VIP尊享满89元减4元运费券（每月3张）
+            {{item.heightlight}}
           </div>
         </div>
       </div>
@@ -20,7 +18,15 @@
 
 <script>
 export default {
-  name: 'NearbyPage'
+  name: 'NearbyPage',
+  setup () {
+    const tags = ['月售', '起送', '基础运费']
+    const nearbyList = [
+      { id: 1, icon: 'http://www.dell-lee.com/imgs/vue3/near.png', title: '沃尔玛', heightlight: 'VIP尊享满89元减4元运费券（每月3张）' },
+      { id: 2, icon: 'http://www.dell-lee.com/imgs/vue3/near.png', title: '沃尔玛', heightlight: 'VIP尊享满89元减4元运费券（每月3张）' }
+    ]
+    return { tags, nearbyList }
+  }
 }
 </script>
 
@@ -33,11 +39,11 @@ export default {
     width: .72rem;
     font-size: .18rem;
     color: #333333;
-    margin: .16rem 0 .14rem 0;
+    margin: .16rem 0 .02rem 0;
   }
   &__item {
     display: flex;
-    padding-top: .12rem;
+    padding: .06rem 0 .06rem;
     &__icon {
       height: .56rem;
       width: .56rem;
@@ -46,14 +52,14 @@ export default {
       flex: 1;
       font-size: .13rem;
       border-bottom: 1px solid $content-background-color;
-      padding: .12rem 0;
+      padding-bottom: .12rem;
       &__title {
-        margin: 0 0 .08rem .16rem;
+        margin: 0 0 .02rem .16rem;
         font-size: .16rem;
         color: $content-fontcolor;
       }
       &__tags {
-        margin-bottom: .08rem;
+        margin: .08rem 0;
       }
       &__tag {
           margin: 0 .16rem 0 .16rem;

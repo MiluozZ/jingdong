@@ -12,45 +12,9 @@
       <img class="banner__image" src="http://www.dell-lee.com/imgs/vue3/banner.jpg"/>
     </div>
     <div class="icons">
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/超市.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">超市遍历</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/菜市场.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">菜市场</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/水果店.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">水果店</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/鲜花.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">鲜花绿植</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/医药健康.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">医药健康</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/家居.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">家居时尚</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/蛋糕.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">烘焙蛋糕</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/签到.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">签到</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/大牌免运.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">大牌免运</p>
-      </div>
-      <div class="icons__item">
-        <img src="http://www.dell-lee.com/imgs/vue3/红包.png" alt="" class="icons__item__icon">
-        <p class="icons__item__desc">红包套餐</p>
+      <div class="icons__item" v-for="(item, index) in staticPartList" :key="index">
+        <img :src="item.url" class="icons__item__icon">
+        <p class="icons__item__desc">{{item.desc}}</p>
       </div>
     </div>
     <div class="gap"></div>
@@ -58,11 +22,26 @@
 
 <script>
 export default {
-  name: 'StaticPart'
+  name: 'StaticPart',
+  setup () {
+    const staticPartList = [
+      { url: 'http://www.dell-lee.com/imgs/vue3/超市.png', desc: '超市遍历' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/菜市场.png', desc: '菜市场' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/水果店.png', desc: '水果店' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/鲜花.png', desc: '鲜花绿植' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/医药健康.png', desc: '医药健康' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/家居.png', desc: '家居时尚' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/蛋糕.png', desc: '烘焙蛋糕' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/签到.png', desc: '签到' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/大牌免运.png', desc: '大牌免运' },
+      { url: 'http://www.dell-lee.com/imgs/vue3/红包.png', desc: '红包套餐' }
+    ]
+    return { staticPartList }
+  }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 @import '../../style/viriables.scss';
 @import '../../style/mixins.scss';
 .position {
